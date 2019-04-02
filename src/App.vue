@@ -79,6 +79,11 @@ export default {
     border-radius: 3px;
   }
 
+  .button:hover {
+    cursor: pointer;
+    background: hsl(0, 0%, 98%);
+  }
+
   .button:active {
     background: hsl(0, 0%, 95%);
   }
