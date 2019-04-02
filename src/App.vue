@@ -8,7 +8,7 @@
     </header>
     <Settings v-if="settings" class="container" />
     <Timer />
-    <Notepad class="container" />
+    <Notepad v-if="$store.state.hasStarted" class="container" />
     <History class="container" />
   </div>
 </template>
