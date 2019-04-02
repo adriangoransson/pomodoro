@@ -71,6 +71,7 @@ export default {
                   sans-serif;
 
     box-sizing: border-box;
+    -webkit-appearance: none;
   }
 
   body {

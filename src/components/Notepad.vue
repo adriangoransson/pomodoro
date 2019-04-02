@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea v-model="text" rows="3" placeholder="Add notes"></textarea>
+    <textarea v-model="text" rows="3" placeholder="Write notes"></textarea>
   </div>
 </template>
 
@@ -29,5 +29,6 @@ export default {
     width: 100%;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
+    font-size: initial;
   }
 </style>

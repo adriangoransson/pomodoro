@@ -115,13 +115,17 @@ export default {
 
   .form-field label {
     flex: 1 0 150px;
-    max-width: 250px;
+    max-width: 40%;
     text-align: right;
     margin-right: 10px;
   }
 
   .form-field input {
-    flex: 1 0 100px;
+    flex: 1 1 100px;
+    max-width: 60%;
     padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: initial;
   }
 </style>
