@@ -13,7 +13,7 @@ export const LONG_BREAK = 'LONG_BREAK';
 export const SHORT_BREAK = 'SHORT_BREAK';
 export const POMODORO = 'POMODORO';
 export const START = 'START';
-export const SKIP = 'SKIP';
+export const NEXT = 'NEXT';
 
 export const DECREMENT_DURATION = 'DECREMENT_DURATION';
 export const ADD_TO_HISTORY = 'PUSH_TO_HISTORY';

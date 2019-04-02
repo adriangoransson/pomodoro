@@ -15,7 +15,7 @@
 import {
   START_TIMER,
   PAUSE,
-  SKIP,
+  NEXT,
 } from '@/vuex-constants';
 
 import { formatMinutes, formattedType, slugType } from '@/utils';
@@ -43,7 +43,7 @@ export default {
     },
 
     skip() {
-      this.$store.dispatch(SKIP);
+      this.$store.dispatch(NEXT);
     },
   },
 

@@ -14,7 +14,7 @@ import {
   SET_POMODORO,
   SET_INTERVAL,
   PLAY_AUDIO,
-  SKIP,
+  NEXT,
   POMODORO,
   SHORT_BREAK,
   LONG_BREAK,
@@ -133,7 +133,7 @@ export default new Vuex.Store({
   },
 
   actions: {
-    [START_TIMER]({ commit, state }) {
+    [START_TIMER]({ commit, dispatch, state }) {
       commit(SET_STARTED);
       const shouldPlay = () => state.duration > 0;
 
@@ -145,7 +145,7 @@ export default new Vuex.Store({
         if (shouldPlay()) {
           commit(DECREMENT_DURATION);
         } else {
-          commit(PAUSE);
+          dispatch(NEXT);
         }
       }, 1000);
 
@@ -155,7 +155,7 @@ export default new Vuex.Store({
       }
     },
 
-    [SKIP]({ commit, state, dispatch }) {
+    [NEXT]({ commit, state, dispatch }) {
       commit(PAUSE);
 
       const { duration, type } = getNextType(state);
