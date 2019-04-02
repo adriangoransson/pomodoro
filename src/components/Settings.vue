@@ -110,7 +110,7 @@ export default {
   .form-field {
     margin-top: 5px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .form-field label {
@@ -122,5 +122,6 @@ export default {
 
   .form-field input {
     flex: 1 0 100px;
+    padding: 5px;
   }
 </style>
