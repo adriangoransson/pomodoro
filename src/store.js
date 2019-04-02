@@ -23,6 +23,8 @@ import {
   SET_POMODOROS,
 } from './vuex-constants';
 
+import { formattedType, formatMinutes } from './utils';
+
 const tickingSound = new Audio('/ticking.wav');
 tickingSound.loop = true;
 
@@ -114,6 +116,7 @@ export default new Vuex.Store({
 
     [DECREMENT_DURATION](state) {
       state.duration -= 1;
+      document.title = `${formattedType(state.type)} - ${formatMinutes(state.duration)}`;
     },
 
     [SET_INTERVAL](state, interval) {
