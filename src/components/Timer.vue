@@ -1,8 +1,6 @@
 <template>
   <div class="timer">
-    <div class="duration" :class="$store.state.type | slugType">
-      {{ duration | formatMinutes }}
-    </div>
+    <div class="duration" :class="$store.state.type | slugType">{{ duration | formatMinutes }}</div>
 
     <div class="button-bar">
       <button @click="toggle" class="button">{{ active ? 'Pause' : 'Start' }}</button>
