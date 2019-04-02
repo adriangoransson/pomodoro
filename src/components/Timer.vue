@@ -58,6 +58,7 @@ export default {
 <style>
   .timer .duration {
     font-size: 5rem;
+    font-family: monospace;
     text-align: center;
     margin: 1rem auto;
     padding: 4rem;
