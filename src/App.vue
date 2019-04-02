@@ -64,9 +64,11 @@ export default {
     margin: auto;
   }
 
-  .container {
-    margin-left: 10px;
-    margin-right: 10px;
+  @media (max-width: 720px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
   }
 
   .button {

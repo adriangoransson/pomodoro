@@ -29,7 +29,7 @@ export default {
     padding: 5px;
     text-align: center;
     border: 1px solid #e0e0e0;
-    margin: 10px;
+    margin: 10px 0;
     background: #fff;
   }
 
