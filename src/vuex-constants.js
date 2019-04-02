@@ -21,3 +21,4 @@ export const SET_INTERVAL = 'SET_INTERVAL';
 export const PLAY_AUDIO = 'PLAY_AUDIO';
 
 export const SET_STARTED = 'SET_STARTED';
+export const SHOW_SETTINGS = 'SHOW_SETTINGS';

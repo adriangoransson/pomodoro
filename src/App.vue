@@ -1,32 +1,45 @@
 <template>
   <div id="app">
-    <div class="container">
+    <header class="container">
       <h1>{{ $store.state.type | formattedType }}</h1>
-    </div>
+      <button @click="settings = !settings" :class="{ active: settings }" class="button">
+        🛠 Settings
+      </button>
+    </header>
+    <Settings v-if="settings" class="container" />
     <Timer />
-    <div class="container">
-      <!-- <Settings /> -->
-      <History />
-    </div>
+    <History class="container" />
   </div>
 </template>
 
 <script>
-// import Settings from './components/Settings.vue';
+import Settings from './components/Settings.vue';
 import Timer from './components/Timer.vue';
 import History from './components/History.vue';
 
+import { SHOW_SETTINGS } from './vuex-constants';
 import { formattedType } from './utils';
 
 export default {
   name: 'app',
+
+  computed: {
+    settings: {
+      get() {
+        return this.$store.state.showSettings;
+      },
+      set(val) {
+        this.$store.commit(SHOW_SETTINGS, val);
+      },
+    },
+  },
 
   filters: {
     formattedType,
   },
 
   components: {
-    // Settings,
+    Settings,
     History,
     Timer,
   },
@@ -71,6 +84,21 @@ export default {
       }
   }
 
+  header {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    display: inline;
+    margin: 0;
+  }
+
+  header .button {
+    font-size: 0.9rem;
+  }
+
   .button {
     background: white;
     font-size: 0.8rem;
@@ -84,7 +112,7 @@ export default {
     background: hsl(0, 0%, 98%);
   }
 
-  .button:active {
+  .button:active, .button.active {
     background: hsl(0, 0%, 95%);
   }
 </style>

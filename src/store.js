@@ -19,6 +19,7 @@ import {
   SHORT_BREAK,
   LONG_BREAK,
   SET_STARTED,
+  SHOW_SETTINGS,
 } from './vuex-constants';
 
 const tickingSound = new Audio('/ticking.wav');
@@ -78,6 +79,7 @@ export default new Vuex.Store({
     history: [],
     interval: null,
     tickingSound,
+    showSettings: false,
   },
 
   getters: {
@@ -129,6 +131,10 @@ export default new Vuex.Store({
 
     [SET_STARTED](state) {
       state.hasStarted = true;
+    },
+
+    [SHOW_SETTINGS](state, value) {
+      state.showSettings = value;
     },
   },
 
