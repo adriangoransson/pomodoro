@@ -20,6 +20,7 @@ import {
   LONG_BREAK,
   SET_STARTED,
   SHOW_SETTINGS,
+  SET_POMODOROS,
 } from './vuex-constants';
 
 const tickingSound = new Audio('/ticking.wav');
@@ -135,6 +136,10 @@ export default new Vuex.Store({
 
     [SHOW_SETTINGS](state, value) {
       state.showSettings = value;
+    },
+
+    [SET_POMODOROS](state, value) {
+      state.pomodoBeforeLongBreak = value;
     },
   },
 
