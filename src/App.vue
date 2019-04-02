@@ -8,6 +8,7 @@
     </header>
     <Settings v-if="settings" class="container" />
     <Timer />
+    <Notepad class="container" />
     <History class="container" />
   </div>
 </template>
@@ -16,6 +17,7 @@
 import Settings from './components/Settings.vue';
 import Timer from './components/Timer.vue';
 import History from './components/History.vue';
+import Notepad from './components/Notepad.vue';
 
 import { SHOW_SETTINGS } from './vuex-constants';
 import { formattedType } from './utils';
@@ -42,6 +44,7 @@ export default {
     Settings,
     History,
     Timer,
+    Notepad,
   },
 };
 </script>
@@ -51,6 +54,8 @@ export default {
     --pomodoro-color: hsl(5, 80%, 50%);
     --short-break-color: hsl(110, 60%, 50%);
     --long-break-color: hsl(220, 60%, 50%);
+    --border-radius: 3px;
+    --border-color: #e0e0e0;
   }
 
   * {
@@ -64,6 +69,8 @@ export default {
                   'Open Sans',
                   'Helvetica Neue',
                   sans-serif;
+
+    box-sizing: border-box;
   }
 
   body {

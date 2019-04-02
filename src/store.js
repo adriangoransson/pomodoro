@@ -21,6 +21,7 @@ import {
   SET_STARTED,
   SHOW_SETTINGS,
   SET_POMODOROS,
+  SET_NOTES,
 } from './vuex-constants';
 
 import { formattedType, formatMinutes } from './utils';
@@ -46,7 +47,7 @@ function getNextType({
       history.length >= pomodoroInHistory
       && history
         .slice(0, pomodoroInHistory)
-        .every(entry => entry !== LONG_BREAK)
+        .every(entry => entry.type !== LONG_BREAK)
     ) {
       return {
         duration: longBreakSeconds,
@@ -83,6 +84,7 @@ export default new Vuex.Store({
     interval: null,
     tickingSound,
     showSettings: false,
+    notes: null,
   },
 
   getters: {
@@ -111,7 +113,7 @@ export default new Vuex.Store({
     },
 
     [ADD_TO_HISTORY](state) {
-      state.history.unshift(state.type);
+      state.history.unshift({ text: state.notes, type: state.type });
     },
 
     [DECREMENT_DURATION](state) {
@@ -144,6 +146,10 @@ export default new Vuex.Store({
     [SET_POMODOROS](state, value) {
       state.pomodoBeforeLongBreak = value;
     },
+
+    [SET_NOTES](state, value) {
+      state.notes = value;
+    },
   },
 
   actions: {
@@ -175,6 +181,7 @@ export default new Vuex.Store({
       const { duration, type } = getNextType(state);
 
       commit(ADD_TO_HISTORY);
+      commit(SET_NOTES, null);
       commit(SET_DURATION, duration);
       commit(SET_TYPE, type);
 

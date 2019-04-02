@@ -23,3 +23,4 @@ export const PLAY_AUDIO = 'PLAY_AUDIO';
 export const SET_STARTED = 'SET_STARTED';
 export const SHOW_SETTINGS = 'SHOW_SETTINGS';
 export const SET_POMODOROS = 'SET_POMODOROS';
+export const SET_NOTES = 'SET_NOTES';

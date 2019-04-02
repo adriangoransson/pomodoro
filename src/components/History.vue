@@ -3,10 +3,13 @@
     <div
       v-for="(history, index) in $store.state.history"
       :key="index"
-      :class="history | slugType"
+      :class="history.type | slugType"
       class="entry"
     >
-      {{ history | formattedType }}
+      <h3 class="has-border-bottom">
+        {{ history.type | formattedType }}
+      </h3>
+      <pre v-if="history.text" class="has-border-bottom">{{ history.text }}</pre>
     </div>
   </div>
 </template>
@@ -26,22 +29,41 @@ export default {
 
 <style>
   .entry {
-    padding: 5px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    border-top: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
     margin: 10px 0;
     background: #fff;
+    text-align: center;
   }
 
-  .history .pomodoro {
+  .history h3 {
+    padding: 5px 20px;
+    margin: 0;
+    font-size: 1rem;
+    background: hsl(0, 0%, 99%);
+  }
+
+  .history pre {
+    padding: 5px;
+    margin: 0;
+    border-radius: var(--border-radius);
+  }
+
+  .has-border-bottom {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .history .pomodoro h3 {
     color: var(--pomodoro-color)
   }
 
-  .history .short-break {
+  .history .short-break h3 {
     color: var(--short-break-color)
   }
 
-  .history .long-break {
+  .history .long-break h3 {
     color: var(--long-break-color)
   }
 </style>
