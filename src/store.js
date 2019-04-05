@@ -33,6 +33,8 @@ import {
 
 import { formattedType, formatMinutes } from './utils';
 
+import * as ls from './localstorage';
+
 const tickingSound = new Audio('/ticking.wav');
 tickingSound.loop = true;
 
@@ -84,18 +86,18 @@ export default new Vuex.Store({
   state: {
     hasStarted: false,
     type: POMODORO,
-    duration: pomodoroSeconds,
-    pomodoBeforeLongBreak,
-    shortBreakSeconds,
-    pomodoroSeconds,
-    longBreakSeconds: pomodoroSeconds,
+    duration: ls.get(ls.POMODORO_SECONDS, pomodoroSeconds),
+    pomodoroSeconds: ls.get(ls.POMODORO_SECONDS, pomodoroSeconds),
+    pomodoBeforeLongBreak: ls.get(ls.POMODORO_BEFORE_LONG_BREAK, pomodoBeforeLongBreak),
+    shortBreakSeconds: ls.get(SHORT_BREAK, shortBreakSeconds),
+    longBreakSeconds: ls.get(ls.LONG_BREAK, pomodoroSeconds),
     history: [],
     interval: null,
     tickingSound,
     showSettings: false,
     notes: null,
-    autoStart: true,
-    playSound: true,
+    autoStart: ls.get(ls.AUTO_START, true),
+    playSound: ls.get(ls.PLAY_SOUND, true),
   },
 
   getters: {
@@ -113,14 +115,17 @@ export default new Vuex.Store({
 
     [SET_SHORT_BREAK](state, seconds) {
       state.shortBreakSeconds = seconds;
+      ls.set(ls.SHORT_BREAK, seconds);
     },
 
     [SET_LONG_BREAK](state, seconds) {
       state.longBreakSeconds = seconds;
+      ls.set(ls.LONG_BREAK, seconds);
     },
 
     [SET_POMODORO](state, seconds) {
       state.pomodoroSeconds = seconds;
+      ls.set(ls.POMODORO_SECONDS, seconds);
     },
 
     [ADD_TO_HISTORY](state) {
@@ -159,6 +164,7 @@ export default new Vuex.Store({
 
     [SET_POMODOROS](state, value) {
       state.pomodoBeforeLongBreak = value;
+      ls.set(ls.POMODORO_BEFORE_LONG_BREAK, value);
     },
 
     [SET_NOTES](state, value) {
@@ -166,11 +172,15 @@ export default new Vuex.Store({
     },
 
     [SET_AUTO_START](state, value) {
-      state.autoStart = !!value;
+      const v = !!value;
+      state.autoStart = v;
+      ls.set(ls.AUTO_START, v);
     },
 
     [SET_PLAY_SOUND](state, value) {
-      state.playSound = !!value;
+      const v = !!value;
+      state.playSound = v;
+      ls.set(ls.PLAY_SOUND, v);
     },
   },
 
@@ -236,6 +246,8 @@ export default new Vuex.Store({
 
       dispatch(MANAGE_AUDIO);
       dispatch(UPDATE_DURATION);
+
+      ls.clear();
     },
 
     [UPDATE_DURATION]({ commit, state }) {
