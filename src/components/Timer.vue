@@ -3,7 +3,7 @@
     <div class="duration" :class="$store.state.type | slugType">{{ duration | formatMinutes }}</div>
 
     <div class="button-bar">
-      <button @click="toggle" class="button">{{ active ? 'Pause' : 'Start' }}</button>
+      <button @click="toggle" class="button">{{ toggleText }}</button>
       <button v-if="active" @click="skip" class="button">Skip</button>
     </div>
   </div>
@@ -22,6 +22,18 @@ export default {
   name: 'timer',
 
   computed: {
+    toggleText() {
+      if (this.active) {
+        return 'Pause';
+      }
+
+      if (this.$store.state.hasStarted) {
+        return 'Resume';
+      }
+
+      return 'Start';
+    },
+
     duration() {
       return this.$store.state.duration;
     },
