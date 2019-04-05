@@ -116,7 +116,6 @@ export default {
   }
 
   .button:hover {
-    cursor: pointer;
     background: hsl(0, 0%, 98%);
   }
 
