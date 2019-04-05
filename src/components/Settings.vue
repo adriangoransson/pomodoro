@@ -26,6 +26,11 @@
       <input v-model="autoStart" type="checkbox" id="auto-start">
     </div>
 
+    <div class="form-field">
+      <label for="play-sound">Play ticking sound for Pomodoro</label>
+      <input v-model="playSound" type="checkbox" id="play-sound">
+    </div>
+
   </form>
 </template>
 
@@ -38,6 +43,8 @@ import {
   SHOW_SETTINGS,
   SET_POMODOROS,
   SET_AUTO_START,
+  SET_PLAY_SOUND,
+  MANAGE_AUDIO,
 } from '@/vuex-constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -109,6 +116,16 @@ export default {
       },
       set(val) {
         this.$store.commit(SET_AUTO_START, val);
+      },
+    },
+
+    playSound: {
+      get() {
+        return this.$store.state.playSound;
+      },
+      set(val) {
+        this.$store.commit(SET_PLAY_SOUND, val);
+        this.$store.dispatch(MANAGE_AUDIO);
       },
     },
   },

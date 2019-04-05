@@ -23,6 +23,10 @@ import {
   SET_POMODOROS,
   SET_NOTES,
   SET_AUTO_START,
+  SET_PLAY_SOUND,
+  CLEAR_INTERVAL,
+  MUTE_AUDIO,
+  MANAGE_AUDIO,
 } from './vuex-constants';
 
 import { formattedType, formatMinutes } from './utils';
@@ -87,6 +91,7 @@ export default new Vuex.Store({
     showSettings: false,
     notes: null,
     autoStart: true,
+    playSound: true,
   },
 
   getters: {
@@ -127,9 +132,12 @@ export default new Vuex.Store({
       state.interval = interval;
     },
 
-    [PAUSE](state) {
+    [CLEAR_INTERVAL](state) {
       clearInterval(state.interval);
       state.interval = null;
+    },
+
+    [MUTE_AUDIO](state) {
       state.tickingSound.pause();
     },
 
@@ -156,11 +164,18 @@ export default new Vuex.Store({
     [SET_AUTO_START](state, value) {
       state.autoStart = !!value;
     },
+
+    [SET_PLAY_SOUND](state, value) {
+      state.playSound = !!value;
+    },
   },
 
   actions: {
     [START_TIMER]({ commit, dispatch, state }) {
-      commit(SET_STARTED);
+      if (!state.hasStarted) {
+        commit(SET_STARTED);
+      }
+
       const shouldPlay = () => state.duration > 0;
 
       if (!shouldPlay()) { return; }
@@ -176,13 +191,13 @@ export default new Vuex.Store({
       }, 1000);
 
       commit(SET_INTERVAL, interval);
-      if (state.type === POMODORO) {
+      if (state.type === POMODORO && state.playSound) {
         commit(PLAY_AUDIO);
       }
     },
 
     [NEXT]({ commit, state, dispatch }) {
-      commit(PAUSE);
+      dispatch(PAUSE);
 
       const { duration, type } = getNextType(state);
 
@@ -193,6 +208,19 @@ export default new Vuex.Store({
 
       if (state.autoStart) {
         dispatch(START_TIMER);
+      }
+    },
+
+    [PAUSE]({ commit }) {
+      commit(CLEAR_INTERVAL);
+      commit(MUTE_AUDIO);
+    },
+
+    [MANAGE_AUDIO]({ commit, state }) {
+      if (!state.playSound) {
+        commit(MUTE_AUDIO);
+      } else if (state.interval !== null) {
+        commit(PLAY_AUDIO);
       }
     },
   },

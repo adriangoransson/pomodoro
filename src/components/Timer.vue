@@ -34,7 +34,7 @@ export default {
   methods: {
     toggle() {
       if (this.active) {
-        this.$store.commit(PAUSE);
+        this.$store.dispatch(PAUSE);
       } else {
         this.$store.dispatch(START_TIMER);
       }

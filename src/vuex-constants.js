@@ -18,10 +18,16 @@ export const NEXT = 'NEXT';
 export const DECREMENT_DURATION = 'DECREMENT_DURATION';
 export const ADD_TO_HISTORY = 'PUSH_TO_HISTORY';
 export const SET_INTERVAL = 'SET_INTERVAL';
+
 export const PLAY_AUDIO = 'PLAY_AUDIO';
+export const MUTE_AUDIO = 'MUTE_AUDIO';
+export const SET_PLAY_SOUND = 'SET_PLAY_SOUND';
+export const MANAGE_AUDIO = 'MANAGE_AUDIO';
 
 export const SET_STARTED = 'SET_STARTED';
 export const SHOW_SETTINGS = 'SHOW_SETTINGS';
 export const SET_POMODOROS = 'SET_POMODOROS';
 export const SET_NOTES = 'SET_NOTES';
 export const SET_AUTO_START = 'SET_AUTO_START';
+
+export const CLEAR_INTERVAL = 'CLEAR_INTERVAL';
