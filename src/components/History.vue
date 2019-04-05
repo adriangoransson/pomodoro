@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .entry {
     border-radius: var(--border-radius);
     border-top: 1px solid var(--border-color);

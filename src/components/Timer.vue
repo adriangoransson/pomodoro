@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .timer .duration {
     font-size: 5rem;
     font-family: monospace;
