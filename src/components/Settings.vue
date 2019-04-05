@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="hide">
+  <div>
 
     <div class="form-field">
       <label for="pomodoro-length">Pomodoro length</label>
@@ -32,10 +32,10 @@
     </div>
 
     <div @click="defaultSettings" class="form-field">
-      <button class="button">Default settings</button>
+      <button type="button" class="button">Default settings</button>
     </div>
 
-  </form>
+  </div>
 </template>
 
 <script>
@@ -43,7 +43,6 @@ import {
   SET_SHORT_BREAK,
   SET_LONG_BREAK,
   SET_POMODORO,
-  SHOW_SETTINGS,
   SET_POMODOROS,
   SET_AUTO_START,
   SET_PLAY_SOUND,
@@ -134,10 +133,6 @@ export default {
   },
 
   methods: {
-    hide() {
-      this.$store.commit(SHOW_SETTINGS, false);
-    },
-
     defaultSettings() {
       this.$store.dispatch(DEFAULT_SETTINGS);
     },
