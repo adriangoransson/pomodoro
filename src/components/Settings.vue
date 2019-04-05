@@ -21,6 +21,11 @@
       <input v-model="pomodorosBeforeBreak" id="pomodoro-before-break" type="number" min="1">
     </div>
 
+    <div class="form-field">
+      <label for="auto-start">Automatically start next timer</label>
+      <input v-model="autoStart" type="checkbox" id="auto-start">
+    </div>
+
   </form>
 </template>
 
@@ -32,6 +37,7 @@ import {
   SET_DURATION,
   SHOW_SETTINGS,
   SET_POMODOROS,
+  SET_AUTO_START,
 } from '@/vuex-constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -96,6 +102,15 @@ export default {
         this.$store.commit(SET_POMODOROS, val);
       },
     },
+
+    autoStart: {
+      get() {
+        return this.$store.state.autoStart;
+      },
+      set(val) {
+        this.$store.commit(SET_AUTO_START, val);
+      },
+    },
   },
 
   methods: {
@@ -127,5 +142,9 @@ export default {
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: initial;
+  }
+
+  .form-field input[type=checkbox] {
+    flex: 0;
   }
 </style>

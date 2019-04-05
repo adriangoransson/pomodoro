@@ -22,6 +22,7 @@ import {
   SHOW_SETTINGS,
   SET_POMODOROS,
   SET_NOTES,
+  SET_AUTO_START,
 } from './vuex-constants';
 
 import { formattedType, formatMinutes } from './utils';
@@ -85,6 +86,7 @@ export default new Vuex.Store({
     tickingSound,
     showSettings: false,
     notes: null,
+    autoStart: true,
   },
 
   getters: {
@@ -150,6 +152,10 @@ export default new Vuex.Store({
     [SET_NOTES](state, value) {
       state.notes = value;
     },
+
+    [SET_AUTO_START](state, value) {
+      state.autoStart = !!value;
+    },
   },
 
   actions: {
@@ -185,7 +191,9 @@ export default new Vuex.Store({
       commit(SET_DURATION, duration);
       commit(SET_TYPE, type);
 
-      dispatch(START_TIMER);
+      if (state.autoStart) {
+        dispatch(START_TIMER);
+      }
     },
   },
 });

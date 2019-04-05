@@ -24,3 +24,4 @@ export const SET_STARTED = 'SET_STARTED';
 export const SHOW_SETTINGS = 'SHOW_SETTINGS';
 export const SET_POMODOROS = 'SET_POMODOROS';
 export const SET_NOTES = 'SET_NOTES';
+export const SET_AUTO_START = 'SET_AUTO_START';

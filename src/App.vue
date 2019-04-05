@@ -69,9 +69,7 @@ export default {
                   'Open Sans',
                   'Helvetica Neue',
                   sans-serif;
-
     box-sizing: border-box;
-    -webkit-appearance: none;
   }
 
   body {
