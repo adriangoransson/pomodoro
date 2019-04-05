@@ -31,3 +31,5 @@ export const SET_NOTES = 'SET_NOTES';
 export const SET_AUTO_START = 'SET_AUTO_START';
 
 export const CLEAR_INTERVAL = 'CLEAR_INTERVAL';
+export const DEFAULT_SETTINGS = 'DEFAULT_SETTINGS';
+export const UPDATE_DURATION = 'UPDATE_DURATION';

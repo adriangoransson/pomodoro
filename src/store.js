@@ -27,6 +27,8 @@ import {
   CLEAR_INTERVAL,
   MUTE_AUDIO,
   MANAGE_AUDIO,
+  DEFAULT_SETTINGS,
+  UPDATE_DURATION,
 } from './vuex-constants';
 
 import { formattedType, formatMinutes } from './utils';
@@ -73,6 +75,8 @@ function getNextType({
 }
 
 const pomodoroSeconds = 1500;
+const shortBreakSeconds = 300;
+const pomodoBeforeLongBreak = 4;
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
@@ -81,8 +85,8 @@ export default new Vuex.Store({
     hasStarted: false,
     type: POMODORO,
     duration: pomodoroSeconds,
-    pomodoBeforeLongBreak: 4,
-    shortBreakSeconds: 300,
+    pomodoBeforeLongBreak,
+    shortBreakSeconds,
     pomodoroSeconds,
     longBreakSeconds: pomodoroSeconds,
     history: [],
@@ -191,9 +195,7 @@ export default new Vuex.Store({
       }, 1000);
 
       commit(SET_INTERVAL, interval);
-      if (state.type === POMODORO && state.playSound) {
-        commit(PLAY_AUDIO);
-      }
+      dispatch(MANAGE_AUDIO);
     },
 
     [NEXT]({ commit, state, dispatch }) {
@@ -219,8 +221,26 @@ export default new Vuex.Store({
     [MANAGE_AUDIO]({ commit, state }) {
       if (!state.playSound) {
         commit(MUTE_AUDIO);
-      } else if (state.interval !== null) {
+      } else if (state.type === POMODORO && state.interval !== null) {
         commit(PLAY_AUDIO);
+      }
+    },
+
+    [DEFAULT_SETTINGS]({ commit, dispatch }) {
+      commit(SET_POMODORO, pomodoroSeconds);
+      commit(SET_SHORT_BREAK, shortBreakSeconds);
+      commit(SET_LONG_BREAK, pomodoroSeconds);
+      commit(SET_POMODOROS, pomodoBeforeLongBreak);
+      commit(SET_PLAY_SOUND, true);
+      commit(SET_AUTO_START, true);
+
+      dispatch(MANAGE_AUDIO);
+      dispatch(UPDATE_DURATION);
+    },
+
+    [UPDATE_DURATION]({ commit, state }) {
+      if (!state.hasStarted) {
+        commit(SET_DURATION, state.pomodoroSeconds);
       }
     },
   },

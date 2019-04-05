@@ -31,6 +31,10 @@
       <input v-model="playSound" type="checkbox" id="play-sound">
     </div>
 
+    <div @click="defaultSettings" class="form-field">
+      <button class="button">Default settings</button>
+    </div>
+
   </form>
 </template>
 
@@ -39,12 +43,13 @@ import {
   SET_SHORT_BREAK,
   SET_LONG_BREAK,
   SET_POMODORO,
-  SET_DURATION,
   SHOW_SETTINGS,
   SET_POMODOROS,
   SET_AUTO_START,
   SET_PLAY_SOUND,
   MANAGE_AUDIO,
+  DEFAULT_SETTINGS,
+  UPDATE_DURATION,
 } from '@/vuex-constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -65,9 +70,7 @@ export default {
         const seconds = toSeconds(minutes);
         this.$store.commit(SET_POMODORO, seconds);
 
-        if (!this.$store.state.hasStarted) {
-          this.$store.commit(SET_DURATION, seconds);
-        }
+        this.$store.dispatch(UPDATE_DURATION);
       },
     },
 
@@ -134,6 +137,10 @@ export default {
     hide() {
       this.$store.commit(SHOW_SETTINGS, false);
     },
+
+    defaultSettings() {
+      this.$store.dispatch(DEFAULT_SETTINGS);
+    },
   },
 };
 </script>
@@ -163,5 +170,9 @@ export default {
 
   .form-field input[type=checkbox] {
     flex: 0;
+  }
+
+  .form-field button {
+    margin: auto;
   }
 </style>
