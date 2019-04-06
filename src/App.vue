@@ -13,7 +13,10 @@
       <History class="container" />
     </div>
     <div>
-      <footer>Made by <a href="https://adriang.se">Adrian Göransson</a>. Source on <a href="https://github.com/adriangoransson/pomodoro">GitHub</a>.</footer>
+      <footer>
+        Made by <a href="https://adriang.se">Adrian Göransson</a>.
+        Source on <a href="https://github.com/adriangoransson/pomodoro">GitHub</a>.
+      </footer>
     </div>
   </div>
 </template>
