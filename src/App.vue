@@ -1,15 +1,20 @@
 <template>
   <div id="app">
-    <header class="container">
-      <h1>{{ $store.state.type | formattedType }}</h1>
-      <button @click="settings = !settings" :class="{ active: settings }" class="button">
-        🛠 Settings
-      </button>
-    </header>
-    <Settings v-if="settings" class="container" />
-    <Timer />
-    <Notepad v-if="$store.state.hasStarted" class="container" />
-    <History class="container" />
+    <div>
+      <header class="container">
+        <h1>{{ $store.state.type | formattedType }}</h1>
+        <button @click="settings = !settings" :class="{ active: settings }" class="button">
+          🛠 Settings
+        </button>
+      </header>
+      <Settings v-if="settings" class="container" />
+      <Timer />
+      <Notepad v-if="$store.state.hasStarted" class="container" />
+      <History class="container" />
+    </div>
+    <div>
+      <footer>Made by <a href="https://adriang.se">Adrian Göransson</a>. Source on <a href="https://github.com/adriangoransson/pomodoro">GitHub</a>.</footer>
+    </div>
   </div>
 </template>
 
@@ -78,9 +83,23 @@ export default {
     background: hsl(0, 0%, 98%);
   }
 
+  html, body, #app {
+    height: 100%;
+  }
+
   #app {
     max-width: 700px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #app div:first-child {
+      flex: 1 0 auto;
+  }
+
+  #app div:last-child {
+    flex-shrink: 0;
   }
 
   @media (max-width: 720px) {
@@ -88,6 +107,15 @@ export default {
         margin-left: 10px;
         margin-right: 10px;
       }
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--pomodoro-color);
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   header {
@@ -119,5 +147,11 @@ export default {
 
   .button:active, .button.active {
     background: hsl(0, 0%, 95%);
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
   }
 </style>
