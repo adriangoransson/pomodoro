@@ -1,6 +1,6 @@
 <template>
   <div :class="entry.type | slugType" class="entry">
-    <h3 class="has-border-bottom">{{ entry.type | formattedType }}</h3>
+    <h2 class="has-border-bottom">{{ entry.type | formattedType }}</h2>
     <pre v-if="entry.text" class="has-border-bottom">{{ entry.text }}</pre>
   </div>
 </template>
@@ -30,22 +30,22 @@ export default {
     text-align: center;
   }
 
-  .entry h3 {
+  .entry h2 {
     padding: 5px 20px;
     margin: 0;
     font-size: 1rem;
     background: hsl(0, 0%, 99%);
   }
 
-  .entry.pomodoro h3 {
+  .entry.pomodoro h2 {
     color: var(--pomodoro-color)
   }
 
-  .entry.short-break h3 {
+  .entry.short-break h2 {
     color: var(--short-break-color)
   }
 
-  .entry.long-break h3 {
+  .entry.long-break h2 {
     color: var(--long-break-color)
   }
 
