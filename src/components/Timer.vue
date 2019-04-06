@@ -21,6 +21,14 @@ import { formatMinutes, formattedType, slugType } from '@/utils';
 export default {
   name: 'timer',
 
+  created() {
+    document.addEventListener('keyup', this.handleKeyup);
+  },
+
+  beforeDestroy() {
+    document.removeEventListener('keyup', this.handleKeyup);
+  },
+
   computed: {
     toggleText() {
       if (this.active) {
@@ -44,6 +52,12 @@ export default {
   },
 
   methods: {
+    handleKeyup(e) {
+      if (e.target === document.body && e.key === ' ') {
+        this.toggle();
+      }
+    },
+
     toggle() {
       if (this.active) {
         this.$store.dispatch(PAUSE);
