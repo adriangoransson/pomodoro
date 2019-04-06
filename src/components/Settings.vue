@@ -3,22 +3,49 @@
 
     <div class="form-field">
       <label for="pomodoro-length">Pomodoro length</label>
-      <input v-model="pomodoro" id="pomodoro-length" type="number" min="1" placeholder="minutes">
+      <input
+        v-model="pomodoro"
+        id="pomodoro-length"
+        type="number"
+        min="1"
+        placeholder="minutes"
+        pattern="[0-9]*"
+      >
     </div>
 
     <div class="form-field">
       <label for="short-break">Short break length</label>
-      <input v-model="shortBreak" id="short-break" type="number" min="1" placeholder="minutes">
+      <input
+        v-model="shortBreak"
+        id="short-break"
+        type="number"
+        min="1"
+        placeholder="minutes"
+        pattern="[0-9]*"
+      >
     </div>
 
     <div class="form-field">
       <label for="long-break">Long break length</label>
-      <input v-model="longBreak" id="long-break" type="number" min="1" placeholder="minutes">
+      <input
+        v-model="longBreak"
+        id="long-break"
+        type="number"
+        min="1"
+        placeholder="minutes"
+        pattern="[0-9]*"
+      >
     </div>
 
     <div class="form-field">
       <label for="pomodoro-before-break">Pomodoros before long break</label>
-      <input v-model="pomodorosBeforeBreak" id="pomodoro-before-break" type="number" min="1">
+      <input
+        v-model="pomodorosBeforeBreak"
+        id="pomodoro-before-break"
+        type="number"
+        min="1"
+        pattern="[0-9]*"
+      >
     </div>
 
     <div class="form-field">
