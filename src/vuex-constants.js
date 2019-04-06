@@ -15,9 +15,7 @@ export const POMODORO = 'POMODORO';
 export const START = 'START';
 export const NEXT = 'NEXT';
 
-export const DECREMENT_DURATION = 'DECREMENT_DURATION';
 export const ADD_TO_HISTORY = 'PUSH_TO_HISTORY';
-export const SET_INTERVAL = 'SET_INTERVAL';
 
 export const PLAY_AUDIO = 'PLAY_AUDIO';
 export const MUTE_AUDIO = 'MUTE_AUDIO';
@@ -32,6 +30,8 @@ export const SET_POMODOROS = 'SET_POMODOROS';
 export const SET_NOTES = 'SET_NOTES';
 export const SET_AUTO_START = 'SET_AUTO_START';
 
-export const CLEAR_INTERVAL = 'CLEAR_INTERVAL';
 export const DEFAULT_SETTINGS = 'DEFAULT_SETTINGS';
 export const UPDATE_DURATION = 'UPDATE_DURATION';
+export const SET_ENDDATE = 'SET_ENDDATE';
+export const SYNC_DURATION = 'SYNC_DURATION';
+export const SET_DOCUMENT_TITLE = 'SET_DOCUMENT_TITLE';

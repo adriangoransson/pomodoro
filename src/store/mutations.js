@@ -8,10 +8,8 @@ import {
   SET_TYPE,
   SET_SHORT_BREAK,
   SET_LONG_BREAK,
-  DECREMENT_DURATION,
   ADD_TO_HISTORY,
   SET_POMODORO,
-  SET_INTERVAL,
   PLAY_AUDIO,
   SET_STARTED,
   SHOW_SETTINGS,
@@ -19,10 +17,11 @@ import {
   SET_NOTES,
   SET_AUTO_START,
   SET_PLAY_SOUND,
-  CLEAR_INTERVAL,
   MUTE_AUDIO,
   ACTIVATE_AUDIO,
   SET_VOLUME,
+  SET_ENDDATE,
+  SET_DOCUMENT_TITLE,
 } from '../vuex-constants';
 
 export default {
@@ -53,18 +52,8 @@ export default {
     state.history.unshift({ text: state.notes, type: state.type });
   },
 
-  [DECREMENT_DURATION](state) {
-    state.duration -= 1;
+  [SET_DOCUMENT_TITLE](state) {
     document.title = `${formattedType(state.type)} - ${formatMinutes(state.duration)}`;
-  },
-
-  [SET_INTERVAL](state, interval) {
-    state.interval = interval;
-  },
-
-  [CLEAR_INTERVAL](state) {
-    clearInterval(state.interval);
-    state.interval = null;
   },
 
   [ACTIVATE_AUDIO](state) {
@@ -112,5 +101,9 @@ export default {
     const v = !!value;
     state.playSound = v;
     ls.set(ls.PLAY_SOUND, v);
+  },
+
+  [SET_ENDDATE](state, value) {
+    state.endDate = value;
   },
 };

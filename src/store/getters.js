@@ -1,3 +1,3 @@
 export default {
-  active: state => state.interval !== null,
+  active: state => state.endDate !== null,
 };

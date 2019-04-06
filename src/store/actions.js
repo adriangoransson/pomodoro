@@ -5,10 +5,8 @@ import {
   START_TIMER,
   SET_SHORT_BREAK,
   SET_LONG_BREAK,
-  DECREMENT_DURATION,
   ADD_TO_HISTORY,
   SET_POMODORO,
-  SET_INTERVAL,
   PLAY_AUDIO,
   NEXT,
   POMODORO,
@@ -19,13 +17,15 @@ import {
   SET_NOTES,
   SET_AUTO_START,
   SET_PLAY_SOUND,
-  CLEAR_INTERVAL,
   MUTE_AUDIO,
   MANAGE_AUDIO,
   DEFAULT_SETTINGS,
   UPDATE_DURATION,
   ACTIVATE_AUDIO,
   SET_VOLUME,
+  SYNC_DURATION,
+  SET_ENDDATE,
+  SET_DOCUMENT_TITLE,
 } from '../vuex-constants';
 
 import * as ls from '../localstorage';
@@ -76,22 +76,43 @@ export default {
       commit(SET_STARTED);
     }
 
-    const shouldPlay = () => state.duration > 0;
+    if (state.duration <= 0) {
+      dispatch(NEXT);
+      return;
+    }
 
-    if (!shouldPlay()) { return; }
+    // Deduct the first second immediately because we're counting duration down to (including) 0
+    const endDate = Date.now() + (state.duration - 1) * 1000;
 
-    commit(DECREMENT_DURATION);
+    commit(SET_ENDDATE, endDate);
 
-    const interval = setInterval(() => {
-      if (shouldPlay()) {
-        commit(DECREMENT_DURATION);
-      } else {
-        dispatch(NEXT);
-      }
-    }, 1000);
-
-    commit(SET_INTERVAL, interval);
+    dispatch(SYNC_DURATION);
     dispatch(MANAGE_AUDIO);
+  },
+
+  [SYNC_DURATION]({
+    commit,
+    dispatch,
+    getters,
+    state,
+  }) {
+    if (!getters.active) {
+      return;
+    }
+
+    const duration = Math.round((state.endDate - Date.now()) / 1000);
+
+    if (duration < 0) {
+      dispatch(NEXT);
+      return;
+    }
+
+    commit(SET_DURATION, duration);
+    commit(SET_DOCUMENT_TITLE);
+
+    setTimeout(() => {
+      dispatch(SYNC_DURATION);
+    }, 1000);
   },
 
   [NEXT]({ commit, state, dispatch }) {
@@ -110,18 +131,22 @@ export default {
   },
 
   [PAUSE]({ commit }) {
-    commit(CLEAR_INTERVAL);
     commit(MUTE_AUDIO);
+    commit(SET_ENDDATE, null);
   },
 
-  [MANAGE_AUDIO]({ commit, state }) {
+  [MANAGE_AUDIO]({
+    commit,
+    getters,
+    state,
+  }) {
     if (state.audio === null) {
       return;
     }
 
     if (!state.playSound) {
       commit(MUTE_AUDIO);
-    } else if (state.type === POMODORO && state.interval !== null) {
+    } else if (state.type === POMODORO && getters.active) {
       if (!audioHasStarted) {
         audioHasStarted = true;
         commit(ACTIVATE_AUDIO);
