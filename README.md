@@ -1,6 +1,20 @@
-# pomodoro
+# Pomodoro time tracker
 
-## Project setup
+Simple timer built according to the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) which has been of tremendous help for me to get studying.
+
+I made it because I couldn't find one already that worked well on both mobile and desktop.
+
+* Responsive, works well on both mobile and desktop devices
+* Customizable and using localStorage to save your preferences
+* Progressive Web App, accessible offline
+* Fast and "lightweight". Around 30kb gzipped (not including audio or image assets)
+* Keyboard shortcut (space) to pause/resume
+
+## Acknowledgements
+* "Tick Tock" sound by FoolBoyMedia on [freesound.org](https://freesound.org/people/FoolBoyMedia/sounds/264498/)
+* "Coloured tomato" design by bakar015 on [www.freepik.com](https://www.freepik.com/free-vector/coloured-tomato-design_938844.htm)
+
+## Vue cli Project setup
 ```
 yarn install
 ```
