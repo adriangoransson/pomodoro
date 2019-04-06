@@ -21,6 +21,7 @@ import {
   SET_PLAY_SOUND,
   CLEAR_INTERVAL,
   MUTE_AUDIO,
+  ACTIVATE_AUDIO,
 } from '../vuex-constants';
 
 export default {
@@ -65,12 +66,16 @@ export default {
     state.interval = null;
   },
 
+  [ACTIVATE_AUDIO](state) {
+    state.audio.start(0);
+  },
+
   [MUTE_AUDIO](state) {
-    state.tickingSound.pause();
+    state.audio.context.suspend();
   },
 
   [PLAY_AUDIO](state) {
-    state.tickingSound.play();
+    state.audio.context.resume();
   },
 
   [SET_STARTED](state) {

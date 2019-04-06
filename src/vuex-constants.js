@@ -23,6 +23,7 @@ export const PLAY_AUDIO = 'PLAY_AUDIO';
 export const MUTE_AUDIO = 'MUTE_AUDIO';
 export const SET_PLAY_SOUND = 'SET_PLAY_SOUND';
 export const MANAGE_AUDIO = 'MANAGE_AUDIO';
+export const ACTIVATE_AUDIO = 'ACTIVATE_AUDIO';
 
 export const SET_STARTED = 'SET_STARTED';
 export const SHOW_SETTINGS = 'SHOW_SETTINGS';

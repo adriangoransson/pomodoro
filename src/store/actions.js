@@ -24,11 +24,14 @@ import {
   MANAGE_AUDIO,
   DEFAULT_SETTINGS,
   UPDATE_DURATION,
+  ACTIVATE_AUDIO,
 } from '../vuex-constants';
 
 import * as ls from '../localstorage';
 
 import { defaultPomodoBeforeLongBreak, defaultPomodoroSeconds, defaultShortBreakSeconds } from './state';
+
+let audioHasStarted = false;
 
 function getNextType({
   history,
@@ -111,6 +114,15 @@ export default {
   },
 
   [MANAGE_AUDIO]({ commit, state }) {
+    if (state.audio === null) {
+      return;
+    }
+
+    if (!audioHasStarted) {
+      audioHasStarted = true;
+      commit(ACTIVATE_AUDIO);
+    }
+
     if (!state.playSound) {
       commit(MUTE_AUDIO);
     } else if (state.type === POMODORO && state.interval !== null) {

@@ -1,8 +1,7 @@
 import * as ls from '../localstorage';
 import { POMODORO } from '../vuex-constants';
 
-const tickingSound = new Audio('/ticking.wav');
-tickingSound.loop = true;
+import audio from './audio';
 
 export const defaultPomodoroSeconds = 1500;
 export const defaultShortBreakSeconds = 300;
@@ -18,7 +17,7 @@ export default {
   longBreakSeconds: ls.get(ls.LONG_BREAK, defaultPomodoroSeconds),
   history: [],
   interval: null,
-  tickingSound,
+  audio,
   showSettings: false,
   notes: null,
   autoStart: ls.get(ls.AUTO_START, true),
