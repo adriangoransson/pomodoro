@@ -25,6 +25,7 @@ import {
   DEFAULT_SETTINGS,
   UPDATE_DURATION,
   ACTIVATE_AUDIO,
+  SET_VOLUME,
 } from '../vuex-constants';
 
 import * as ls from '../localstorage';
@@ -137,6 +138,7 @@ export default {
     commit(SET_POMODOROS, defaultPomodoBeforeLongBreak);
     commit(SET_PLAY_SOUND, true);
     commit(SET_AUTO_START, true);
+    commit(SET_VOLUME, 1);
 
     dispatch(MANAGE_AUDIO);
     dispatch(UPDATE_DURATION);

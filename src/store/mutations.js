@@ -22,6 +22,7 @@ import {
   CLEAR_INTERVAL,
   MUTE_AUDIO,
   ACTIVATE_AUDIO,
+  SET_VOLUME,
 } from '../vuex-constants';
 
 export default {
@@ -76,6 +77,12 @@ export default {
 
   [PLAY_AUDIO](state) {
     state.audio.context.resume();
+  },
+
+  [SET_VOLUME](state, value) {
+    state.audio.setVolume(value);
+    state.volume = value;
+    ls.set(ls.VOLUME, value);
   },
 
   [SET_STARTED](state) {

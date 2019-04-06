@@ -6,6 +6,7 @@ export const SHORT_BREAK = 'SHORT_BREAK';
 export const LONG_BREAK = 'LONG_BREAK';
 export const AUTO_START = 'AUTO_START';
 export const PLAY_SOUND = 'PLAY_SOUND';
+export const VOLUME = 'VOLUME';
 
 function getSettings() {
   return JSON.parse(localStorage.getItem(KEY)) || {};

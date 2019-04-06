@@ -22,4 +22,5 @@ export default {
   notes: null,
   autoStart: ls.get(ls.AUTO_START, true),
   playSound: ls.get(ls.PLAY_SOUND, true),
+  volume: ls.get(ls.VOLUME, 1),
 };

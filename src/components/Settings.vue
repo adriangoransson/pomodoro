@@ -31,6 +31,33 @@
       <input v-model="playSound" type="checkbox" id="play-sound">
     </div>
 
+    <div class="form-field">
+      <label for="volume">Volume</label>
+      <input
+        v-model="volume"
+        type="range"
+        id="volume"
+        min="0"
+        max="1"
+        step="0.05"
+        list="volume-ticks"
+      >
+
+      <datalist id="volume-ticks">
+        <option value="0" label="0%" />
+        <option value="0.1" />
+        <option value="0.2" />
+        <option value="0.3" />
+        <option value="0.4" />
+        <option value="0.5" label="50%" />
+        <option value="0.6" />
+        <option value="0.7" />
+        <option value="0.8" />
+        <option value="0.9" />
+        <option value="1" label="100%" />
+      </datalist>
+    </div>
+
     <div @click="defaultSettings" class="form-field">
       <button type="button" class="button">Default settings</button>
     </div>
@@ -49,6 +76,7 @@ import {
   MANAGE_AUDIO,
   DEFAULT_SETTINGS,
   UPDATE_DURATION,
+  SET_VOLUME,
 } from '@/vuex-constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -128,6 +156,15 @@ export default {
       set(val) {
         this.$store.commit(SET_PLAY_SOUND, val);
         this.$store.dispatch(MANAGE_AUDIO);
+      },
+    },
+
+    volume: {
+      get() {
+        return this.$store.state.volume;
+      },
+      set(val) {
+        this.$store.commit(SET_VOLUME, parseFloat(val));
       },
     },
   },
