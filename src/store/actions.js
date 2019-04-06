@@ -118,14 +118,14 @@ export default {
       return;
     }
 
-    if (!audioHasStarted) {
-      audioHasStarted = true;
-      commit(ACTIVATE_AUDIO);
-    }
-
     if (!state.playSound) {
       commit(MUTE_AUDIO);
     } else if (state.type === POMODORO && state.interval !== null) {
+      if (!audioHasStarted) {
+        audioHasStarted = true;
+        commit(ACTIVATE_AUDIO);
+      }
+
       commit(PLAY_AUDIO);
     }
   },
