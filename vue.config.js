@@ -1,3 +1,6 @@
+const path = require('path');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+
 module.exports = {
   pwa: {
     name: 'Pomodoro',
@@ -11,5 +14,13 @@ module.exports = {
       maskIcon: 'safari-pinned-tab.svg',
       msTileImage: 'msapplication-icon-144x144.png',
     },
+  },
+  configureWebpack: {
+    plugins: [
+      new PrerenderSPAPlugin({
+        staticDir: path.join(__dirname, 'dist'),
+        routes: ['/'],
+      }),
+    ],
   },
 };
