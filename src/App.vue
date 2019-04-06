@@ -15,7 +15,7 @@
     <div>
       <footer>
         Made by <a href="https://adriang.se">Adrian Göransson</a>.
-        Source on <a href="https://github.com/adriangoransson/pomodoro">GitHub</a>.
+        More info on <a href="https://github.com/adriangoransson/pomodoro">GitHub</a>.
       </footer>
     </div>
   </div>
