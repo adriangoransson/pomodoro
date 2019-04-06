@@ -14,7 +14,9 @@ I made it because I couldn't find one already that worked well on both mobile an
 * "Tick Tock" sound by FoolBoyMedia on [freesound.org](https://freesound.org/people/FoolBoyMedia/sounds/264498/)
 * "Coloured tomato" design by bakar015 on [www.freepik.com](https://www.freepik.com/free-vector/coloured-tomato-design_938844.htm)
 
-## Vue cli Project setup
+<details><summary>Dev instructions</summary>
+
+### Project setup
 ```
 yarn install
 ```
@@ -41,3 +43,5 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+</details>
