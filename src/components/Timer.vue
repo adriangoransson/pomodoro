@@ -87,21 +87,19 @@ export default {
     margin: 1rem auto;
     padding: 4rem;
     text-shadow: 0 1px 3px hsla(0, 0%, 30%, 0.5);
+    color: white;
   }
 
   .timer .duration.pomodoro {
     background: var(--pomodoro-color);
-    color: white;
   }
 
   .timer .duration.short-break {
     background: var(--short-break-color);
-    color: white;
   }
 
   .timer .duration.long-break {
     background: var(--long-break-color);
-    color: white;
   }
 
   .timer .current-type {

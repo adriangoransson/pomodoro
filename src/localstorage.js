@@ -8,6 +8,7 @@ export const AUTO_START = 'AUTO_START';
 export const PLAY_SOUND = 'PLAY_SOUND';
 export const VOLUME = 'VOLUME';
 export const NOTIFICATIONS = 'NOTIFICATIONS';
+export const DARK_THEME = 'DARK_THEME';
 
 function getSettings() {
   return JSON.parse(localStorage.getItem(KEY)) || {};

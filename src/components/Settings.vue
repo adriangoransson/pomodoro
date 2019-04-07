@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="settings">
 
     <div class="form-field">
       <label for="pomodoro-length">Pomodoro length</label>
@@ -104,6 +104,11 @@
       </button>
     </div>
 
+    <div class="form-field">
+      <label for="dark-theme">Dark theme</label>
+      <input v-model="darkTheme" type="checkbox" id="dark-theme">
+    </div>
+
     <br>
 
     <div class="form-field default">
@@ -129,6 +134,7 @@ import {
   UPDATE_DURATION,
   SET_VOLUME,
   SET_NOTIFICATIONS,
+  SET_DARK_THEME,
 } from '@/vuex-constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -247,6 +253,15 @@ export default {
 
       return 'Request permission';
     },
+
+    darkTheme: {
+      get() {
+        return this.$store.state.darkTheme;
+      },
+      set(val) {
+        this.$store.commit(SET_DARK_THEME, val);
+      },
+    },
   },
 
   methods: {
@@ -269,8 +284,15 @@ export default {
 </script>
 
 <style scoped>
+  .settings {
+    background: var(--alternate-accent-color);
+    padding: 5px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+  }
+
   .form-field {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     align-items: center;
   }
@@ -284,7 +306,7 @@ export default {
 
   .form-field input {
     flex: 1 1 100px;
-    max-width: 60%;
+    max-width: 58%;
     padding: 5px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);

@@ -4,11 +4,14 @@ Simple timer built according to the [Pomodoro Technique](https://en.wikipedia.or
 
 I made it because I couldn't find one already that worked well on both mobile and desktop.
 
+## Features
+
 * Responsive, works well on both mobile and desktop devices
 * Customizable and using localStorage to save your preferences
 * Progressive Web App, accessible offline
 * Ticking sound during focus rounds
 * Notification when round is over
+* Light and dark themes
 * Keyboard shortcut (space) to pause/resume
 * Fast and "lightweight". Around 30kb gzipped (not including audio or image assets)
 

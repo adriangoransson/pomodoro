@@ -23,6 +23,7 @@ import {
   SET_ENDDATE,
   SET_DOCUMENT_TITLE,
   SET_NOTIFICATIONS,
+  SET_DARK_THEME,
 } from '../vuex-constants';
 
 export default {
@@ -112,5 +113,17 @@ export default {
     const v = !!value;
     state.notifications = v;
     ls.set(ls.NOTIFICATIONS, v);
+  },
+
+  [SET_DARK_THEME](state, value) {
+    const v = !!value;
+    state.darkTheme = v;
+    ls.set(ls.DARK_THEME, v);
+
+    if (v) {
+      document.body.classList.add('animate', 'dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
   },
 };

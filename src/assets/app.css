@@ -1,9 +1,30 @@
 :root {
+  /* general */
+  --border-radius: 3px;
+  --transition-duration: 0.2s;
+
+  /* light theme */
+  --body-background-color: hsl(0, 0%, 98%);
+  --accent-color: white;
+  --alternate-accent-color: hsl(0, 0%, 95%);
+  --text-color: hsl(0, 0%, 15%);
+  --border-color: #e0e0e0;
   --pomodoro-color: hsl(5, 80%, 50%);
   --short-break-color: hsl(110, 60%, 50%);
   --long-break-color: hsl(220, 60%, 50%);
-  --border-radius: 3px;
-  --border-color: #e0e0e0;
+  --link-color: var(--pomodoro-color)
+}
+
+.dark-theme {
+  --body-background-color: hsl(0, 0%, 11%);
+  --text-color: hsl(0, 0%, 98%);
+  --accent-color: hsl(0, 0%, 10%);
+  --alternate-accent-color: hsl(0, 0%, 25%);
+  --border-color: #505050;
+  --pomodoro-color: hsl(5, 80%, 40%);
+  --short-break-color: hsl(110, 60%, 40%);
+  /* no need to override long break color */
+  --link-color: red;
 }
 
 * {
@@ -23,7 +44,21 @@
 body {
   width: 100;
   margin: 0;
-  background: hsl(0, 0%, 98%);
+
+  color: var(--text-color);
+  background: var(--body-background-color);
+}
+
+.animate {
+  transition-property: background, color, border;
+  transition-duration: var(--transition-duration);
+}
+
+textarea, input, button {
+  transition-property: background, color, border;
+  transition-duration: var(--transition-duration);
+  color: var(--text-color);
+  background: var(--accent-color);
 }
 
 html, body, #app {
@@ -54,7 +89,7 @@ html, body, #app {
 
 a {
   text-decoration: none;
-  color: var(--pomodoro-color);
+  color: var(--link-color);
 }
 
 a:hover {
@@ -77,19 +112,19 @@ header .button {
 }
 
 .button {
-  background: white;
+  background: var(--accent-color);
   font-size: 0.8rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid var(--border-color);
   padding: 10px 15px;
   border-radius: 3px;
 }
 
 .button:hover {
-  background: hsl(0, 0%, 98%);
+  background: var(--body-background-color);
 }
 
 .button:active, .button.active {
-  background: hsl(0, 0%, 95%);
+  background: var(--alternate-accent-color);
 }
 
 footer {

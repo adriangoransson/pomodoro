@@ -28,6 +28,7 @@ import {
   SET_DOCUMENT_TITLE,
   NOTIFY,
   SET_NOTIFICATIONS,
+  SET_DARK_THEME,
 } from '../vuex-constants';
 
 import * as ls from '../localstorage';
@@ -201,6 +202,7 @@ export default {
     commit(SET_AUTO_START, true);
     commit(SET_VOLUME, 1);
     commit(SET_NOTIFICATIONS, false);
+    commit(SET_DARK_THEME, false);
 
     dispatch(MANAGE_AUDIO);
     dispatch(UPDATE_DURATION);

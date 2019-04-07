@@ -44,6 +44,12 @@ export default {
     },
   },
 
+  created() {
+    if (this.$store.state.darkTheme) {
+      document.body.classList.add('dark-theme');
+    }
+  },
+
   filters: {
     formattedType,
   },

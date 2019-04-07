@@ -26,15 +26,15 @@ export default {
     border-right: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
     margin: 10px 0;
-    background: #fff;
     text-align: center;
+    background: var(--accent-color);
   }
 
   .entry h2 {
     padding: 5px 20px;
     margin: 0;
     font-size: 1rem;
-    background: hsl(0, 0%, 99%);
+    background: var(--body-background-color);
   }
 
   .entry.pomodoro h2 {
