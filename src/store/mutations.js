@@ -22,6 +22,7 @@ import {
   SET_VOLUME,
   SET_ENDDATE,
   SET_DOCUMENT_TITLE,
+  SET_NOTIFICATIONS,
 } from '../vuex-constants';
 
 export default {
@@ -105,5 +106,11 @@ export default {
 
   [SET_ENDDATE](state, value) {
     state.endDate = value;
+  },
+
+  [SET_NOTIFICATIONS](state, value) {
+    const v = !!value;
+    state.notifications = v;
+    ls.set(ls.NOTIFICATIONS, v);
   },
 };

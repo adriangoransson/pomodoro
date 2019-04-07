@@ -85,8 +85,32 @@
       </datalist>
     </div>
 
-    <div @click="defaultSettings" class="form-field">
-      <button type="button" class="button">Default settings</button>
+    <div v-if="notificationSupport" class="form-field">
+      <label for="notifications">Notifications on new round</label>
+      <input
+        v-if="notificationPermission === 'granted'"
+        v-model="notifications"
+        type="checkbox"
+        id="notifications"
+      >
+      <button
+        v-else
+        @click="notificationRequest"
+        :disabled="notificationsDenied"
+        type="button"
+        class="button"
+      >
+        {{ notificationText }}
+      </button>
+    </div>
+
+    <br>
+
+    <div class="form-field default">
+      <label for="default">Default settings</label>
+      <button @click="defaultSettings" type="button" class="button">
+        Restore
+      </button>
     </div>
 
   </div>
@@ -104,6 +128,7 @@ import {
   DEFAULT_SETTINGS,
   UPDATE_DURATION,
   SET_VOLUME,
+  SET_NOTIFICATIONS,
 } from '@/vuex-constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -111,6 +136,13 @@ const toSeconds = minutes => minutes * 60;
 const toMinutes = seconds => seconds / 60;
 
 export default {
+  data() {
+    return {
+      notificationSupport: 'Notification' in window,
+      notificationPermission: Notification.permission,
+    };
+  },
+
   computed: {
     pomodoro: {
       get() {
@@ -194,11 +226,43 @@ export default {
         this.$store.commit(SET_VOLUME, parseFloat(val));
       },
     },
+
+    notifications: {
+      get() {
+        return this.$store.state.notifications;
+      },
+      set(val) {
+        this.$store.commit(SET_NOTIFICATIONS, val);
+      },
+    },
+
+    notificationsDenied() {
+      return this.notificationPermission === 'denied';
+    },
+
+    notificationText() {
+      if (this.notificationsDenied) {
+        return 'Permission denied by browser';
+      }
+
+      return 'Request permission';
+    },
   },
 
   methods: {
     defaultSettings() {
       this.$store.dispatch(DEFAULT_SETTINGS);
+    },
+
+    notificationRequest() {
+      Notification.requestPermission().then((result) => {
+        if (result === 'granted') {
+          this.notificationPermission = result;
+          this.$store.commit(SET_NOTIFICATIONS, true);
+        } else {
+          this.notificationPermission = 'denied';
+        }
+      });
     },
   },
 };
@@ -206,7 +270,7 @@ export default {
 
 <style scoped>
   .form-field {
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     align-items: center;
   }
@@ -231,7 +295,8 @@ export default {
     flex: 0;
   }
 
-  .form-field button {
-    margin: auto;
+  .default button {
+    font-weight: bold;
+    color: red;
   }
 </style>

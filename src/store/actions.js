@@ -26,6 +26,8 @@ import {
   SYNC_DURATION,
   SET_ENDDATE,
   SET_DOCUMENT_TITLE,
+  NOTIFY,
+  SET_NOTIFICATIONS,
 } from '../vuex-constants';
 
 import * as ls from '../localstorage';
@@ -103,7 +105,9 @@ export default {
     const duration = Math.round((state.endDate - Date.now()) / 1000);
 
     if (duration < 0) {
-      dispatch(NEXT);
+      dispatch(NEXT).then(() => {
+        dispatch(NOTIFY);
+      });
       return;
     }
 
@@ -115,19 +119,51 @@ export default {
     }, 1000);
   },
 
-  [NEXT]({ commit, state, dispatch }) {
-    dispatch(PAUSE);
-
-    const { duration, type } = getNextType(state);
-
-    commit(ADD_TO_HISTORY);
-    commit(SET_NOTES, null);
-    commit(SET_DURATION, duration);
-    commit(SET_TYPE, type);
-
-    if (state.autoStart) {
-      dispatch(START_TIMER);
+  [NOTIFY]({ state: { notifications, type } }) {
+    if (!notifications) {
+      return;
     }
+
+    const text = (() => {
+      switch (type) {
+        case POMODORO:
+          return 'Get back to work!';
+
+        case SHORT_BREAK:
+          return 'Take a short break';
+
+        case LONG_BREAK:
+          return 'Take a long break';
+
+        default:
+          throw new Error('Could not get notification text!');
+      }
+    })();
+
+    const not = new Notification(text, { icon: '/android-chrome-192x192.png' });
+
+    setTimeout(() => {
+      not.close();
+    }, 3000);
+  },
+
+  [NEXT]({ commit, state, dispatch }) {
+    return new Promise((resolve) => {
+      dispatch(PAUSE);
+
+      const { duration, type } = getNextType(state);
+
+      commit(ADD_TO_HISTORY);
+      commit(SET_NOTES, null);
+      commit(SET_DURATION, duration);
+      commit(SET_TYPE, type);
+
+      if (state.autoStart) {
+        dispatch(START_TIMER);
+      }
+
+      resolve();
+    });
   },
 
   [PAUSE]({ commit }) {
@@ -164,6 +200,7 @@ export default {
     commit(SET_PLAY_SOUND, true);
     commit(SET_AUTO_START, true);
     commit(SET_VOLUME, 1);
+    commit(SET_NOTIFICATIONS, false);
 
     dispatch(MANAGE_AUDIO);
     dispatch(UPDATE_DURATION);
