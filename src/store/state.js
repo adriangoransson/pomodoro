@@ -21,7 +21,7 @@ export default {
   showSettings: false,
   notes: null,
   autoStart: ls.get(ls.AUTO_START, true),
-  playSound: ls.get(ls.PLAY_SOUND, true),
+  playSound: ls.get(ls.PLAY_SOUND, false),
   volume: ls.get(ls.VOLUME, 1),
   notifications: ls.get(ls.NOTIFICATIONS, false) && 'Notification' in window && Notification.permission === 'granted',
 };

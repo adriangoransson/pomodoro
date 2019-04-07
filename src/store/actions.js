@@ -197,7 +197,7 @@ export default {
     commit(SET_SHORT_BREAK, defaultShortBreakSeconds);
     commit(SET_LONG_BREAK, defaultPomodoroSeconds);
     commit(SET_POMODOROS, defaultPomodoBeforeLongBreak);
-    commit(SET_PLAY_SOUND, true);
+    commit(SET_PLAY_SOUND, false);
     commit(SET_AUTO_START, true);
     commit(SET_VOLUME, 1);
     commit(SET_NOTIFICATIONS, false);
