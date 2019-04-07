@@ -7,8 +7,10 @@ I made it because I couldn't find one already that worked well on both mobile an
 * Responsive, works well on both mobile and desktop devices
 * Customizable and using localStorage to save your preferences
 * Progressive Web App, accessible offline
-* Fast and "lightweight". Around 30kb gzipped (not including audio or image assets)
+* Ticking sound during focus rounds
+* Notification when round is over
 * Keyboard shortcut (space) to pause/resume
+* Fast and "lightweight". Around 30kb gzipped (not including audio or image assets)
 
 ## Acknowledgements
 * "Tick Tock" sound by FoolBoyMedia on [freesound.org](https://freesound.org/people/FoolBoyMedia/sounds/264498/)
