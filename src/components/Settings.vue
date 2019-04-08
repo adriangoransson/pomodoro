@@ -85,10 +85,11 @@
       </datalist>
     </div>
 
-    <div v-if="notificationSupport" class="form-field">
+    <div class="form-field">
       <label for="notifications">Notifications on new round</label>
+      <em v-if="!notificationSupport">Not supported for your device</em>
       <input
-        v-if="notificationPermission === 'granted'"
+        v-else-if="notificationPermission === 'granted'"
         v-model="notifications"
         type="checkbox"
         id="notifications"
