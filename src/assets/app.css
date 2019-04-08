@@ -54,11 +54,12 @@ body {
   transition-duration: var(--transition-duration);
 }
 
-textarea, input, button {
+textarea, input[type=text], input[type=number], button {
   transition-property: background, color, border;
   transition-duration: var(--transition-duration);
   color: var(--text-color);
   background: var(--accent-color);
+  -webkit-appearance: none;
 }
 
 html, body, #app {
