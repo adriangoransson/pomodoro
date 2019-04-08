@@ -293,21 +293,19 @@ export default {
   }
 
   .form-field {
-    margin-top: 15px;
+    margin-top: 10px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    line-height: 1.4rem;
   }
 
   .form-field label {
-    flex: 1 0 150px;
-    max-width: 40%;
-    text-align: right;
-    margin-right: 10px;
+    flex: 1 0 180px;
   }
 
   .form-field input {
     flex: 1 1 100px;
-    max-width: 58%;
     padding: 5px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
