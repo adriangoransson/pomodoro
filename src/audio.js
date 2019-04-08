@@ -1,4 +1,4 @@
-import * as ls from '../localstorage';
+import * as ls from './localstorage';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 

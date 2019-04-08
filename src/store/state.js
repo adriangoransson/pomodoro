@@ -1,7 +1,7 @@
 import * as ls from '../localstorage';
 import { POMODORO } from './constants';
 
-import audio from './audio';
+import audio from '../audio';
 
 export const defaultPomodoroSeconds = 1500;
 export const defaultShortBreakSeconds = 300;
