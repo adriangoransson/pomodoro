@@ -27,7 +27,7 @@ import Timer from './components/Timer.vue';
 import History from './components/History.vue';
 import Notepad from './components/Notepad.vue';
 
-import { SHOW_SETTINGS } from './vuex-constants';
+import { SHOW_SETTINGS } from './store/constants';
 import { formattedType } from './utils';
 
 export default {

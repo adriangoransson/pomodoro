@@ -1,4 +1,4 @@
-import { POMODORO, SHORT_BREAK, LONG_BREAK } from './vuex-constants';
+import { POMODORO, SHORT_BREAK, LONG_BREAK } from './store/constants';
 
 function zeropad(input, n = 2) {
   const l = `${input}`.length;

@@ -29,7 +29,7 @@ import {
   NOTIFY,
   SET_NOTIFICATIONS,
   SET_DARK_THEME,
-} from '../vuex-constants';
+} from './constants';
 
 import * as ls from '../localstorage';
 

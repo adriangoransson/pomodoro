@@ -1,5 +1,5 @@
 import * as ls from '../localstorage';
-import { POMODORO } from '../vuex-constants';
+import { POMODORO } from './constants';
 
 import audio from './audio';
 

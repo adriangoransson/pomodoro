@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { SET_NOTES } from '@/vuex-constants';
+import { SET_NOTES } from '../store/constants';
 
 export default {
   computed: {

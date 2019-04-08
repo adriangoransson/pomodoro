@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { formattedType, slugType } from '@/utils';
+import { formattedType, slugType } from '../utils';
 
 export default {
   name: 'HistoryEntry',

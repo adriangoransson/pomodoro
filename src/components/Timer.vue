@@ -14,9 +14,9 @@ import {
   START_TIMER,
   PAUSE,
   NEXT,
-} from '@/vuex-constants';
+} from '../store/constants';
 
-import { formatMinutes, formattedType, slugType } from '@/utils';
+import { formatMinutes, formattedType, slugType } from '../utils';
 
 export default {
   name: 'timer',

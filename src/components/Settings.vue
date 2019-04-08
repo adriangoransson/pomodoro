@@ -136,7 +136,7 @@ import {
   SET_VOLUME,
   SET_NOTIFICATIONS,
   SET_DARK_THEME,
-} from '@/vuex-constants';
+} from '../store/constants';
 
 const validMinutes = minutes => minutes < 1;
 const toSeconds = minutes => minutes * 60;

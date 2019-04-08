@@ -24,7 +24,7 @@ import {
   SET_DOCUMENT_TITLE,
   SET_NOTIFICATIONS,
   SET_DARK_THEME,
-} from '../vuex-constants';
+} from './constants';
 
 export default {
   [SET_DURATION](state, duration) {
