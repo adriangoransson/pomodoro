@@ -313,7 +313,7 @@ export default {
   }
 
   .form-field input[type=checkbox] {
-    flex: 0;
+    flex: 0 15px;
   }
 
   .default button {
