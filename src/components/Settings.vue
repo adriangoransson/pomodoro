@@ -91,13 +91,14 @@
       <input
         v-else-if="notificationPermission === 'granted'"
         v-model="notifications"
-        type="checkbox"
         id="notifications"
+        type="checkbox"
       >
       <button
         v-else
         @click="notificationRequest"
         :disabled="notificationsDenied"
+        id="notifications"
         type="button"
         class="button"
       >
