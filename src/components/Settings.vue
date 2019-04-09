@@ -287,7 +287,7 @@ export default {
 <style scoped>
   .settings {
     background: var(--alternate-accent-color);
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
   }
