@@ -272,14 +272,26 @@ export default {
     },
 
     notificationRequest() {
-      Notification.requestPermission().then((result) => {
+      let callbackExecuted = false;
+
+      const callback = (result) => {
+        if (callbackExecuted) { return; }
+        callbackExecuted = true;
+
+
         if (result === 'granted') {
           this.notificationPermission = result;
           this.$store.commit(SET_NOTIFICATIONS, true);
         } else {
           this.notificationPermission = 'denied';
         }
-      });
+      };
+
+      // Safari doesn't support promises
+      const req = Notification.requestPermission(callback);
+      if (req && req.then) {
+        req.then(callback);
+      }
     },
   },
 };
