@@ -19,34 +19,16 @@ I made it because I couldn't find one already that worked well on both mobile an
 * "Tick Tock" sound by FoolBoyMedia on [freesound.org](https://freesound.org/people/FoolBoyMedia/sounds/264498/)
 * "Coloured tomato" design by bakar015 on [www.freepik.com](https://www.freepik.com/free-vector/coloured-tomato-design_938844.htm)
 
-<details><summary>Dev instructions</summary>
+## Contributing
+This project was scaffolded with [Vue cli](https://cli.vuejs.org/).
+Entrypoint: [main.js](./src/main.js) and [App.vue](./src/App.vue).
+Most of the logic is kept in the [Vuex store](./src/store).
 
-### Project setup
-```
-yarn install
-```
+Airbnb style javascript lint.
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-</details>
+| Description                              | Command        |
+| ---------------------------------------- | -------------- |
+| Project setup                            | `yarn install` |
+| Compiles and hot-reloads for development | `yarn serve`   |
+| Compiles and minifies for production     | `yarn build`   |
+| Lints and fixes files                    | `yarn lint`    |
