@@ -62,23 +62,8 @@ textarea, input[type=text], input[type=number], button {
   -webkit-appearance: none;
 }
 
-html, body, #app {
+html, body {
   height: 100%;
-}
-
-#app {
-  max-width: 700px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-#app div:first-child {
-  flex: 1 0 auto;
-}
-
-#app div:last-child {
-  flex-shrink: 0;
 }
 
 @media (max-width: 720px) {

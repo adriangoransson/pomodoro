@@ -63,4 +63,22 @@ export default {
 };
 </script>
 
+<style scoped>
+  #app {
+    height: 100%;
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #app div:first-child {
+    flex: 1 0 auto;
+  }
+
+  #app div:last-child {
+    flex-shrink: 0;
+  }
+</style>
+
 <style src="./assets/app.css">
