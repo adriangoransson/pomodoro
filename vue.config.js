@@ -14,7 +14,11 @@ module.exports = {
       maskIcon: 'safari-pinned-tab.svg',
       msTileImage: 'msapplication-icon-144x144.png',
     },
+    workboxOptions: {
+      skipWaiting: true,
+    },
   },
+
   configureWebpack: {
     plugins: [
       new PrerenderSPAPlugin({

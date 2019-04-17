@@ -5,14 +5,8 @@ import { register } from 'register-service-worker';
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
 
-    updatefound(registration) {
-      registration.addEventListener('activate', (event) => {
-        event.waitUntil(
-          caches
-            .keys()
-            .then(keys => Promise.all(keys.map(key => caches.delete(key)))),
-        );
-      });
+    updated() {
+      caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
     },
   });
 }
