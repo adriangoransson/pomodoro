@@ -94,6 +94,13 @@ export default {
     text-align: center;
     font-size: 0.8rem;
     color: hsl(0, 0%, 25%);
+    animation: fadein 2s;
+  }
+
+  @keyframes fadein {
+    0%    { opacity: 0; }
+    20%   { opacity: 0; }
+    100%  { opacity: 1; }
   }
 </style>
 
