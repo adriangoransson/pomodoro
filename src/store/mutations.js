@@ -81,6 +81,7 @@ export default {
   },
 
   [SHOW_SETTINGS](state, value) {
+    state.showSettingsTip = false;
     state.showSettings = value;
   },
 

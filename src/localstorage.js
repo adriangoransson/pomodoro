@@ -14,6 +14,10 @@ function getSettings() {
   return JSON.parse(localStorage.getItem(KEY)) || {};
 }
 
+export function hasCustomSettings() {
+  return !!localStorage.getItem(KEY);
+}
+
 export function get(key, def) {
   const ls = getSettings();
 

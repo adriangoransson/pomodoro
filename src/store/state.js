@@ -25,4 +25,5 @@ export default {
   volume: ls.get(ls.VOLUME, 1),
   notifications: ls.get(ls.NOTIFICATIONS, false) && 'Notification' in window && Notification.permission === 'granted',
   darkTheme: ls.get(ls.DARK_THEME, false),
+  showSettingsTip: !ls.hasCustomSettings(),
 };

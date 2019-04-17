@@ -7,9 +7,19 @@
           🛠 Settings
         </button>
       </header>
+
       <Settings v-if="settings" class="container" />
+
       <Timer />
+
+      <p v-if="$store.state.showSettingsTip" class="help-text container">
+        Tip:
+        Check the <a @click.prevent="settings = true" href="#">settings</a> to enable audio,
+        notifications and dark theme!
+      </p>
+
       <Notepad v-if="$store.state.hasStarted" class="container" />
+
       <History class="container" />
     </div>
     <div>
@@ -78,6 +88,12 @@ export default {
 
   #app div:last-child {
     flex-shrink: 0;
+  }
+
+  .help-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: hsl(0, 0%, 25%);
   }
 </style>
 
