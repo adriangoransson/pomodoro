@@ -120,7 +120,7 @@ export default {
     }, 1000);
   },
 
-  [NOTIFY]({ state: { notifications, type } }) {
+  [NOTIFY]({ state: { notifications, history, type } }) {
     if (!notifications) {
       return;
     }
@@ -141,7 +141,16 @@ export default {
       }
     })();
 
-    const not = new Notification(text, { icon: '/android-chrome-192x192.png' });
+    let body;
+    if (history[0] && history[0].text) {
+      body = history[0].text
+        .split('\n')
+        .map(s => s.trim())
+        .filter(s => s !== '')
+        .join(', ');
+    }
+
+    const not = new Notification(text, { body, icon: '/android-chrome-192x192.png' });
 
     setTimeout(() => {
       not.close();
