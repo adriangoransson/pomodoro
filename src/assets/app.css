@@ -12,19 +12,19 @@
   --pomodoro-color: hsl(5, 80%, 50%);
   --short-break-color: hsl(110, 60%, 50%);
   --long-break-color: hsl(220, 60%, 50%);
-  --link-color: var(--pomodoro-color)
+  --link-color: #e90000;
 }
 
 .dark-theme {
-  --body-background-color: hsl(0, 0%, 11%);
+  --body-background-color: #2a2e31;
   --text-color: hsl(0, 0%, 98%);
-  --accent-color: hsl(0, 0%, 10%);
-  --alternate-accent-color: hsl(0, 0%, 25%);
+  --accent-color: #23272e;
+  --alternate-accent-color: #393c44;
   --border-color: #505050;
   --pomodoro-color: hsl(5, 80%, 40%);
   --short-break-color: hsl(110, 60%, 40%);
   /* no need to override long break color */
-  --link-color: red;
+  --link-color: #ff5c5c;
 }
 
 * {

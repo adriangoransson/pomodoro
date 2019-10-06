@@ -331,6 +331,6 @@ export default {
 
   .default button {
     font-weight: bold;
-    color: red;
+    color: var(--link-color);
   }
 </style>
