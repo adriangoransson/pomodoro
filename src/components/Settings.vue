@@ -107,8 +107,12 @@
     </div>
 
     <div class="form-field">
-      <label for="dark-theme">Dark theme</label>
-      <input v-model="darkTheme" type="checkbox" id="dark-theme">
+      <label for="theme-switcher">Theme</label>
+      <select v-model="theme" id="theme-switcher">
+        <option :value="null">Browser selected</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
     </div>
 
     <br>
@@ -136,7 +140,7 @@ import {
   UPDATE_DURATION,
   SET_VOLUME,
   SET_NOTIFICATIONS,
-  SET_DARK_THEME,
+  SET_THEME,
 } from '../store/constants';
 
 const validMinutes = minutes => minutes < 1;
@@ -256,12 +260,12 @@ export default {
       return 'Request permission';
     },
 
-    darkTheme: {
+    theme: {
       get() {
-        return this.$store.state.darkTheme;
+        return this.$store.state.theme;
       },
       set(val) {
-        this.$store.commit(SET_DARK_THEME, val);
+        this.$store.commit(SET_THEME, val);
       },
     },
   },
@@ -317,7 +321,7 @@ export default {
     flex: 1 0 180px;
   }
 
-  .form-field input {
+  .form-field input, .form-field select {
     flex: 1 1 100px;
     padding: 5px;
     border: 1px solid var(--border-color);

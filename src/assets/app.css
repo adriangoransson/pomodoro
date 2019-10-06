@@ -3,28 +3,76 @@
   --border-radius: 3px;
   --transition-duration: 0.2s;
 
-  /* light theme */
-  --body-background-color: hsl(0, 0%, 98%);
-  --accent-color: white;
-  --alternate-accent-color: hsl(0, 0%, 95%);
-  --text-color: hsl(0, 0%, 15%);
-  --border-color: #e0e0e0;
-  --pomodoro-color: hsl(5, 80%, 50%);
-  --short-break-color: hsl(110, 60%, 50%);
-  --long-break-color: hsl(220, 60%, 50%);
-  --link-color: #e90000;
+  --light-body-background-color: hsl(0, 0%, 98%);
+  --light-text-color: hsl(0, 0%, 15%);
+  --light-accent-color: white;
+  --light-alternate-accent-color: hsl(0, 0%, 95%);
+  --light-border-color: #e0e0e0;
+  --light-pomodoro-color: hsl(5, 80%, 50%);
+  --light-short-break-color: hsl(110, 60%, 50%);
+  --light-long-break-color: hsl(220, 60%, 50%);
+  --light-link-color: #e90000;
+
+  --dark-body-background-color: #2a2e31;
+  --dark-text-color: hsl(0, 0%, 98%);
+  --dark-accent-color: #23272e;
+  --dark-alternate-accent-color: #393c44;
+  --dark-border-color: #505050;
+  --dark-pomodoro-color: hsl(5, 80%, 40%);
+  --dark-short-break-color: hsl(110, 60%, 40%);
+  --dark-long-break-color: hsl(220, 60%, 50%);
+  --dark-link-color: #ff5c5c;
+
+  /* Default to light theme */
+  --body-background-color: var(--light-body-background-color);
+  --text-color: var(--light-text-color);
+  --accent-color: var(--light-accent-color);
+  --alternate-accent-color: var(--light-alternate-accent-color);
+  --border-color: var(--light-border-color);
+  --pomodoro-color: var(--light-pomodoro-color);
+  --short-break-color: var(--light-short-break-color);
+  --long-break-color: var(--light-long-break-color);
+  --link-color: var(--light-link-color);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-background-color: var(--dark-body-background-color);
+    --text-color: var(--dark-text-color);
+    --accent-color: var(--dark-accent-color);
+    --alternate-accent-color: var(--dark-alternate-accent-color);
+    --border-color: var(--dark-border-color);
+    --pomodoro-color: var(--dark-pomodoro-color);
+    --short-break-color: var(--dark-short-break-color);
+    --long-break-color: var(--dark-long-break-color);
+    --link-color: var(--dark-link-color);
+  }
+
+  /* Override */
+  .light-theme {
+    --body-background-color: var(--light-body-background-color);
+    --text-color: var(--light-text-color);
+    --accent-color: var(--light-accent-color);
+    --alternate-accent-color: var(--light-alternate-accent-color);
+    --border-color: var(--light-border-color);
+    --pomodoro-color: var(--light-pomodoro-color);
+    --short-break-color: var(--light-short-break-color);
+    --long-break-color: var(--light-long-break-color);
+    --link-color: var(--light-link-color);
+  }
+}
+
+/* Override */
 .dark-theme {
-  --body-background-color: #2a2e31;
-  --text-color: hsl(0, 0%, 98%);
-  --accent-color: #23272e;
-  --alternate-accent-color: #393c44;
-  --border-color: #505050;
-  --pomodoro-color: hsl(5, 80%, 40%);
-  --short-break-color: hsl(110, 60%, 40%);
-  /* no need to override long break color */
-  --link-color: #ff5c5c;
+  --body-background-color: var(--dark-body-background-color);
+  --text-color: var(--dark-text-color);
+  --accent-color: var(--dark-accent-color);
+  --alternate-accent-color: var(--dark-alternate-accent-color);
+  --border-color: var(--dark-border-color);
+  --pomodoro-color: var(--dark-pomodoro-color);
+  --short-break-color: var(--dark-short-break-color);
+  --long-break-color: var(--dark-long-break-color);
+  --link-color: var(--dark-link-color);
 }
 
 * {
@@ -54,12 +102,11 @@ body {
   transition-duration: var(--transition-duration);
 }
 
-textarea, input[type=text], input[type=number], button {
+textarea, input[type=text], input[type=number], button, select {
   transition-property: background, color, border;
   transition-duration: var(--transition-duration);
   color: var(--text-color);
   background: var(--accent-color);
-  -webkit-appearance: none;
 }
 
 html, body {

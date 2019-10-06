@@ -23,7 +23,7 @@ import {
   SET_ENDDATE,
   SET_DOCUMENT_TITLE,
   SET_NOTIFICATIONS,
-  SET_DARK_THEME,
+  SET_THEME,
 } from './constants';
 
 export default {
@@ -116,15 +116,18 @@ export default {
     ls.set(ls.NOTIFICATIONS, v);
   },
 
-  [SET_DARK_THEME](state, value) {
-    const v = !!value;
-    state.darkTheme = v;
-    ls.set(ls.DARK_THEME, v);
+  [SET_THEME](state, value) {
+    state.theme = value;
+    ls.set(ls.THEME, value);
 
-    if (v) {
-      document.body.classList.add('animate', 'dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
+    document.body.classList.remove('light-theme', 'dark-theme');
+    if (value) {
+      document.body.classList.add('animate');
+      if (value === 'dark') {
+        document.body.classList.add('dark-theme');
+      } else if (value === 'light') {
+        document.body.classList.add('light-theme');
+      }
     }
   },
 };

@@ -15,7 +15,7 @@
       <p v-if="$store.state.showSettingsTip" class="help-text container">
         Tip:
         Check the <a @click.prevent="settings = true" href="#">settings</a> to enable audio,
-        notifications and dark theme!
+        notifications and switch theme!
       </p>
 
       <Notepad v-if="$store.state.hasStarted" class="container" />
@@ -55,7 +55,10 @@ export default {
   },
 
   created() {
-    if (this.$store.state.darkTheme) {
+    const { theme } = this.$store.state;
+    if (theme === 'light') {
+      document.body.classList.add('light-theme');
+    } else if (theme === 'dark') {
       document.body.classList.add('dark-theme');
     }
   },
@@ -93,7 +96,7 @@ export default {
   .help-text {
     text-align: center;
     font-size: 0.8rem;
-    color: hsl(0, 0%, 25%);
+    color: var(--text-color);
     animation: fadein 2s;
   }
 

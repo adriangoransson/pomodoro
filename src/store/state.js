@@ -24,6 +24,6 @@ export default {
   playSound: ls.get(ls.PLAY_SOUND, false),
   volume: ls.get(ls.VOLUME, 1),
   notifications: ls.get(ls.NOTIFICATIONS, false) && 'Notification' in window && Notification.permission === 'granted',
-  darkTheme: ls.get(ls.DARK_THEME, false),
+  theme: ls.get(ls.THEME, null),
   showSettingsTip: !ls.hasCustomSettings(),
 };
