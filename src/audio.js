@@ -10,7 +10,7 @@ if (AudioContext) {
   const gain = context.createGain();
   gain.connect(context.destination);
 
-  fetch('/ticking.wav').then(resp => resp.arrayBuffer().then((buffer) => {
+  fetch('/ticking.wav').then((resp) => resp.arrayBuffer().then((buffer) => {
     context.decodeAudioData(buffer, (decoded) => {
       audio.buffer = decoded;
       audio.connect(gain);

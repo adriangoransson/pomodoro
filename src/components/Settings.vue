@@ -143,9 +143,9 @@ import {
   SET_THEME,
 } from '../store/constants';
 
-const validMinutes = minutes => minutes < 1;
-const toSeconds = minutes => minutes * 60;
-const toMinutes = seconds => seconds / 60;
+const validMinutes = (minutes) => minutes < 1;
+const toSeconds = (minutes) => minutes * 60;
+const toMinutes = (seconds) => seconds / 60;
 
 export default {
   data() {
@@ -281,7 +281,6 @@ export default {
       const callback = (result) => {
         if (callbackExecuted) { return; }
         callbackExecuted = true;
-
 
         if (result === 'granted') {
           this.notificationPermission = result;

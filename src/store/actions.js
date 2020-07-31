@@ -53,7 +53,7 @@ function getNextType({
       history.length >= pomodoroInHistory
       && history
         .slice(0, pomodoroInHistory)
-        .every(entry => entry.type !== LONG_BREAK)
+        .every((entry) => entry.type !== LONG_BREAK)
     ) {
       return {
         duration: longBreakSeconds,
@@ -145,8 +145,8 @@ export default {
     if (history[0] && history[0].text) {
       body = history[0].text
         .split('\n')
-        .map(s => s.trim())
-        .filter(s => s !== '')
+        .map((s) => s.trim())
+        .filter((s) => s !== '')
         .join(', ');
     }
 

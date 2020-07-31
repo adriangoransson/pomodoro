@@ -20,10 +20,10 @@
     "@vue/cli-plugin-pwa": "~4.4.6",
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "~4.4.6",
-    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/eslint-config-airbnb": "^5.1.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^6.5.1",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-vue": "^6.2.2",
     "path": "^0.12.7",
     "vue-template-compiler": "^2.5.21"
   }

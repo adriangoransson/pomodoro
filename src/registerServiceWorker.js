@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
 
     updated() {
-      caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
+      caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)));
     },
   });
 }
